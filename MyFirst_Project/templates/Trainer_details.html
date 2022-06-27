@@ -1,0 +1,98 @@
+{% extends 'Nav\AdminNav.html' %}
+
+{% block content %}
+<style>
+     body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #E4E4E4;
+}
+* {box-sizing: border-box}
+
+
+.table {
+
+}
+/* Add padding to table and style */
+    .tables {
+  border-style:outset;
+  margin-bottom: 0px;
+  margin-left: 350px;
+  margin-right:350px;
+  background-color:#3FEEE6;
+  padding: 16px;
+}
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+
+       }
+
+       .search input{
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid blue;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 70px;
+        background: blue;
+
+       }
+
+</style>
+<div class="container">
+    <form  class='form-inline pull-right' method ='post' action="" >
+                {% csrf_token %}
+                        <div class="form-group mb-2">
+                            <input type="text" class="form-control" name="q" placeholder="Search">
+                        </div>
+                                  <button type="submit" class="btn btn-primary mb-2">search</button>
+
+
+    </form>
+    <table class='table  bg-info  table-bordered table-striped table-hover text-center'>
+        <thead class="bg-primary text-white align-middle ">
+        <tr>
+            <th scope="col" class="text-center">Trainer_Name</th>
+            <th class="text-center">Trainer_Phno</th>
+            <th class="text-center">Trainer_Email</th>
+        </tr>
+        </thead>
+        <tbody>
+                            {% for i in data %}
+
+        <tr>
+            <td>{{i.Trainer_Name}}</td>
+            <td>{{i.Trainer_Phone}}</td>
+            <td>{{i.Trainer_Email}}</td>
+        </tr>
+                            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

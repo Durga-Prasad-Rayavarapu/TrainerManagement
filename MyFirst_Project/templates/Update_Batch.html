@@ -1,0 +1,81 @@
+{% extends 'Nav\AdminNav.html' %}
+{% block content %}
+<style>
+      body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #E4E4E4;
+}
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.containers {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=email],select,input[type=datetime-local],tr{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of div */
+.containers {
+  border-style:outset;
+  margin-bottom: 0px;
+  margin-left: 350px;
+  margin-right:350px;
+  background-color:#3FEEE6
+}
+/* Set a style for the submit button */
+.submitbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.glyphicon-remove-circle{
+color:white;
+font-size:30px}
+ </style>
+<div   class="containers">
+         <a href="{%url 'admin'%}">
+          <span class="glyphicon glyphicon-remove-circle pull-right"></span>
+        </a>
+    <h2>TRAINER Assigning</h2>
+    <form method="post">
+                {% csrf_token %}
+            <label>Name:-</label><br>
+                <select name="ddlt">
+                    <option selected>{{data.tname}}</option>
+                    {% for i in Namelist %}
+                    <option> {{i.Trainer_Name}}</option>
+                            {% endfor %}
+                </select><br>
+            <label>Batch_No:-</label><br>
+            <input type="text" name="btc" value="{{data.tbatch_no}}"><br>
+            <label>Course:-</label><br>
+                <select name="ddlc">
+                    <option selected>{{data.course}}</option>
+                            {% for j in Courselist %}
+                    <option> {{j.Course_Name}}</option>
+                            {% endfor %}
+                </select><br>
+            <label>Date:-</label><br>
+            <input type="datetime-local" name="date" value="{{data.date}}"><br>
+        <button class ='submitbtn' type="submit" name="btn" value="Sumbit">Submit</button>
+        </form>
+</div>
+{% endblock %}
