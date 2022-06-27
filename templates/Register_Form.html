@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #12f8ad;
+}
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.containers {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=email],select{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of div */
+div {
+  border-style:outset;
+  margin-bottom: 0px;
+  margin-left: 350px;
+  margin-right:350px;
+  background-color:#2a2b38
+}
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+label { font-weight: 500; font-size: 14px; line-height: 1.7;  }
+h1 ,label{color:white;}
+form{border-shape:round}
+.glyphicon glyphicon-remove-circle{font-size:80px}
+a{color:white;
+font-size:30px}
+    </style>
+</head>
+<body>
+   <div class="container">
+    <form class="form" method="post" action="trainerSet">
+        {% csrf_token %}
+            <a href="{%url 'home'%}">
+          <span class="glyphicon glyphicon-remove-circle pull-right"></span>
+        </a>
+        <h1> TRAINER REGISTER FORM</h1>
+        <label>Name:-</label><br>
+                <input type="text" name="t_txt" required><br>
+                <label>Age:-</label><br>
+                    <input type="text" name="age">
+                    <label>Phone_Number:-</label><br>
+                    <input type="text" name="ph" required>
+                   <label> Email:-</label> <br>
+                <input type="email" name="email" required>
+                  <label>  Password:-</label><br>
+                <input type="password" name="psw">
+           <label>City :</label><br>
+            <select name="ddlCity">
+                <option selected disabled='true'>--City Name--</option>
+                {% for city in Citylist %}
+                <option>{{city.City_Name}}</option>
+                {% endfor %}
+            </select>
+                    <button type="submit" name="subt" class="registerbtn">Register</button>
+    </form>
+   </div>
+</body>
+</html>

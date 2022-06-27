@@ -1,0 +1,54 @@
+{% extends 'Nav\AdminNav.html' %}
+
+{% block content %}
+<style>
+     body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #E4E4E4;
+}
+* {box-sizing: border-box}
+
+
+.table {
+
+}
+/* Add padding to table and style */
+    .tables {
+  border-style:outset;
+  margin-bottom: 0px;
+  margin-left: 350px;
+  margin-right:350px;
+  background-color:#3FEEE6;
+  padding: 16px;
+}
+
+</style>
+<div class="container">
+    <h2>TRAINER DETAILS:-</h2>
+    <table class='table  bg-info  table-bordered table-striped table-hover text-center'>
+        <thead class="bg-primary text-white align-middle ">
+        <tr>
+            <th scope="col" class="text-center">Trainer_Name</th>
+            <th class="text-center">Batch_No</th>
+            <th class="text-center">Course</th>
+            <th class="text-center">Date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+                            {% for i in batch %}
+
+        <tr>
+            <td>{{i.tname}}</td>
+            <td>{{i.tbatch_no}}</td>
+            <td>{{i.course}}</td>
+            <td>{{i.date}}</td>
+            <td><a href="{% url 'update' i.id %}">Update</a><a href="{% url 'del' i.id %}">Delete</a></td>
+        </tr>
+                            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

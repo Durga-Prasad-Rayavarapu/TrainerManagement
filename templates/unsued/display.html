@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #E4E4E4;
+}
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=email],select,input[type=date]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of div */
+div {
+  border-style:outset;
+  margin-bottom: 0px;
+  margin-left: 350px;
+  margin-right:350px;
+  background-color:#3FEEE6
+}
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>TRAINER DATA</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>Trainer_Name:_</label><br>
+        <select name="ddltrainer">
+            <option>Select Trainer</option>
+            {% for i in Namelist %}
+            <option>{{i.Trainer_Name}}</option>
+            {% endfor %}
+        </select><br>
+        <label>Phone:-</label><br>
+        <input type="text" name="ph-txt"><br>
+        <label>Course:-</label><br>
+        <select name="ddlcourse">
+            <option>Select Course</option>
+            {% for j in courselist %}
+            <option>{{j.Course_Name}}</option>
+            {% endfor %}
+        </select><br>
+        <label>Batch_No</label><br>
+        <input type="text" name="batch_no"><br>
+        <label>Date:-</label><br>
+        <input type="date" name="date">
+
+    </form>
+    <button type="submit" name="bt1" class="registerbtn">ASSIGN</button>
+
+</div>
+
+</body>
+</html>
